@@ -1,0 +1,128 @@
+[
+    {
+        "_id": "t101",
+        "name": "Remote Control Car",
+        "imgUrl": "https://example.com/toy1.jpg",
+        "price": 89,
+        "labels": ["On wheels", "Battery Powered", "Outdoor"],
+        "createdAt": 1631031814444,
+        "inStock": true
+    },
+    {
+        "_id": "t102",
+        "name": "Paint Set Deluxe",
+        "imgUrl": "https://example.com/toy2.jpg",
+        "price": 45,
+        "labels": ["Art", "Box game"],
+        "createdAt": 1631031813333,
+        "inStock": true
+    },
+    {
+        "_id": "t103",
+        "name": "Baby Einstein Piano",
+        "imgUrl": "https://example.com/toy3.jpg",
+        "price": 155,
+        "labels": ["Battery Powered", "Baby"],
+        "createdAt": 1631031812222,
+        "inStock": false
+    },
+    {
+        "_id": "t104",
+        "name": "Wooden Puzzle Set",
+        "imgUrl": "https://example.com/toy4.jpg",
+        "price": 35,
+        "labels": ["Puzzle", "Box game"],
+        "createdAt": 1631031811111,
+        "inStock": true
+    },
+    {
+        "_id": "t105",
+        "name": "1000pc World Map Puzzle",
+        "imgUrl": "https://example.com/toy5.jpg",
+        "price": 75,
+        "labels": ["Puzzle", "Art"],
+        "createdAt": 1631031810100,
+        "inStock": true
+    },
+    {
+        "_id": "t106",
+        "name": "3D Jigsaw Puzzle",
+        "imgUrl": "https://example.com/toy6.jpg",
+        "price": 120,
+        "labels": ["Puzzle", "Box game"],
+        "createdAt": 1631031809099,
+        "inStock": false
+    },
+    {
+        "_id": "t107",
+        "name": "Racing Skateboard",
+        "imgUrl": "https://example.com/toy7.jpg",
+        "price": 180,
+        "labels": ["On wheels", "Outdoor"],
+        "createdAt": 1631031808088,
+        "inStock": true
+    },
+    {
+        "_id": "t108",
+        "name": "Electronic Drum Kit",
+        "imgUrl": "https://example.com/toy8.jpg",
+        "price": 199,
+        "labels": ["Battery Powered", "Art"],
+        "createdAt": 1631031807077,
+        "inStock": true
+    },
+    {
+        "_id": "t109",
+        "name": "Dancing Robot",
+        "imgUrl": "https://example.com/toy9.jpg",
+        "price": 165,
+        "labels": ["Battery Powered", "Box game"],
+        "createdAt": 1631031806066,
+        "inStock": false
+    },
+    {
+        "_id": "t111",
+        "name": "Baby Doll Set",
+        "imgUrl": "https://example.com/toy11.jpg",
+        "price": 55,
+        "labels": ["Doll", "Baby"],
+        "createdAt": 1631031805055,
+        "inStock": true
+    },
+    {
+        "_id": "t110",
+        "name": "Musical Crib Mobile",
+        "imgUrl": "https://example.com/toy10.jpg",
+        "price": 95,
+        "labels": ["Baby", "Battery Powered"],
+        "createdAt": 1631031804044,
+        "inStock": true
+    },
+    {
+        "_id": "t112",
+        "name": "Outdoor Play Kitchen",
+        "imgUrl": "https://example.com/toy12.jpg",
+        "price": 145,
+        "labels": ["Outdoor", "Box game"],
+        "createdAt": 1631031803033,
+        "inStock": true
+    },
+    {
+        "_id": "t113",
+        "name": "Art Easel Set",
+        "imgUrl": "https://example.com/toy13.jpg",
+        "price": 85,
+        "labels": ["Art", "Baby"],
+        "createdAt": 1631031802022,
+        "inStock": false
+    },
+    {
+        "_id": "t114",
+        "name": "Remote Control Helicopter",
+        "imgUrl": "https://example.com/toy14.jpg",
+        "price": 195,
+        "labels": ["Battery Powered", "Outdoor"],
+        "createdAt": 1631031801011,
+        "inStock": true
+    }
+]

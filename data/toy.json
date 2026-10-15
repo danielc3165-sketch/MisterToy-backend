@@ -1,0 +1,134 @@
+[
+    {
+        "name": "Wooden Puzzle Set",
+        "price": 137,
+        "inStock": false,
+        "labels": [
+            "Puzzle",
+            "Outdoor"
+        ],
+        "_id": "aieI9",
+        "createdAt": 1755085852762
+    },
+    {
+        "name": "Electronic Drum Kit",
+        "price": 194,
+        "inStock": true,
+        "labels": [
+            "Outdoor",
+            "Box game"
+        ],
+        "_id": "ImU2L",
+        "createdAt": 1755085890481
+    },
+    {
+        "name": "Wooden Puzzle Set",
+        "price": 88,
+        "inStock": true,
+        "labels": [
+            "On wheels",
+            "Box game"
+        ],
+        "_id": "fDklD",
+        "createdAt": 1755086931547
+    },
+    {
+        "name": "1000pc World Map Puzzle",
+        "price": 147,
+        "inStock": true,
+        "labels": [
+            "Doll",
+            "Baby"
+        ],
+        "_id": "HTJ0i",
+        "createdAt": 1755086931679
+    },
+    {
+        "name": "Racing Skateboard",
+        "price": 49,
+        "inStock": false,
+        "labels": [
+            "Puzzle",
+            "Battery Powered"
+        ],
+        "_id": "ib69P",
+        "createdAt": 1755086931807
+    },
+    {
+        "name": "Electronic Drum Kit",
+        "price": 31,
+        "inStock": false,
+        "labels": [
+            "Box game",
+            "On wheels"
+        ],
+        "_id": "B186G",
+        "createdAt": 1755086931952
+    },
+    {
+        "name": "Wooden Puzzle Set",
+        "price": 22,
+        "inStock": true,
+        "labels": [
+            "On wheels",
+            "Puzzle"
+        ],
+        "_id": "iLCSn",
+        "createdAt": 1755086932089
+    },
+    {
+        "name": "Musical Crib Mobile",
+        "price": 122,
+        "inStock": false,
+        "labels": [
+            "On wheels",
+            "Baby"
+        ],
+        "_id": "LWm1W",
+        "createdAt": 1755086933089
+    },
+    {
+        "name": "Electronic Drum Kit",
+        "price": 56,
+        "inStock": true,
+        "labels": [
+            "Battery Powered",
+            "Box game"
+        ],
+        "_id": "S71DH",
+        "createdAt": 1755086933242
+    },
+    {
+        "name": "Paint Set Deluxe",
+        "price": 158,
+        "inStock": false,
+        "labels": [
+            "On wheels",
+            "Battery Powered"
+        ],
+        "_id": "krYFJ",
+        "createdAt": 1755086933379
+    },
+    {
+        "name": "Remote Control Car",
+        "price": 87,
+        "inStock": true,
+        "labels": [
+            "On wheels",
+            "Box game"
+        ],
+        "_id": "dB72a",
+        "createdAt": 1755086933619
+    },
+    {
+        "name": "1000pc World Map Puzzle",
+        "price": 73,
+        "inStock": false,
+        "labels": [
+            "Box game",
+            "Battery Powered"
+        ],
+        "_id": "76AlM",
+        "createdAt": 1791991762656
+    }
+]
