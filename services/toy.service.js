@@ -12,7 +12,7 @@ export const toyService = {
 
 const toys = utilService.readJsonFile('data/toy.json')
 
-function query(filterBy) {
+async function query(filterBy) {
     
     var toysToReturn = [...toys]
 
@@ -43,27 +43,26 @@ function query(filterBy) {
     )
   }
     
-
-    console.log('TR',toysToReturn)
-
-    return Promise.resolve(toysToReturn)
+    return toysToReturn
 }
 
-function getById(toyId) {
+async function getById(toyId) {
     const toy = toys.find(toy => toy._id === toyId)
-    return Promise.resolve(toy)
+    return toy
 }
 
-function remove(toyId) {
+async function remove(toyId) {
     const idx = toys.findIndex(toy => toy._id === toyId)
-    if (idx === -1) return Promise.reject('No Such Toy')
+    if (idx === -1) return 'No Such Toy'
 
     const toy = toys[idx]
     toys.splice(idx, 1)
-    return _saveCarsToFile()
+    
+    return await _saveToysToFile()
+    
 }
 
-function save(toy) {
+async function save(toy) {
     if (toy._id) {
         const idx = toys.findIndex(currToy => currToy._id === toy._id)
         toys.splice(idx, 1, toy)
@@ -72,19 +71,19 @@ function save(toy) {
         toy.createdAt = Date.now()
         toys.push(toy)
     }
-    return _saveCarsToFile().then(() => toy)
+    await _saveToysToFile() 
+    return toy
 }
 
 
-function _saveCarsToFile() {
-    return new Promise((resolve, reject) => {
+async function _saveToysToFile() {
         const data = JSON.stringify(toys, null, 2)
         fs.writeFile('data/toy.json', data, (err) => {
             if (err) {
                 loggerService.error('Cannot write to toys file', err)
-                return reject(err)
+                throw err
             }
-            resolve()
-        })
+                 
+            return resolve()
     })
 }

@@ -29,7 +29,7 @@ app.use(express.json())
 // REST API for Toys
 app.get('/api/toy', (req, res) => {
 
-    const { txt, inStock, labels, sortBy } = req.query
+  const { txt, inStock, labels, sortBy } = req.query
 
   const filterBy = {
     txt: txt || '',
@@ -38,11 +38,12 @@ app.get('/api/toy', (req, res) => {
     sortBy: sortBy || 'createAt',
   }
 
-  console.log('F',filterBy)
-
   
     toyService.query(filterBy)
-        .then(toys => res.send(toys))
+        .then(toys => {
+            console.log('S toys',toys)
+            res.send(toys)
+        })
         .catch(err => {
             loggerService.error('Cannot get toys', err)
             res.status(400).send('Cannot get toys')
