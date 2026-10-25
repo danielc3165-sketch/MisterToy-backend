@@ -96,15 +96,27 @@
     "createdAt": 1792859206999
   },
   {
-    "name": "!וואלק צעצוע חדש מהניילונים",
-    "price": 99,
+    "_id": "FQbV6",
+    "name": "!וואלק מהניילונים",
+    "price": 79,
     "imgUrl": "hardcoded-url-for-now",
     "labels": [
       "On wheels",
       "Outdoor"
     ],
     "inStock": true,
-    "_id": "FQbV6",
     "createdAt": 1792879214861
+  },
+  {
+    "name": "Super Toy",
+    "price": 120,
+    "imgUrl": "hardcoded-url-for-now",
+    "labels": [
+      "Baby",
+      "Outdoor"
+    ],
+    "inStock": true,
+    "_id": "y1clx",
+    "createdAt": 1792927978836
   }
 ]

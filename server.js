@@ -68,9 +68,10 @@ app.post('/api/toy', (req, res) => {
         price: +req.body.price,
         imgUrl: req.body.imgUrl,
         labels: req.body.labels,
-        inStock: req.body.inStock = 'true' ? true : false
+        inStock: req.body.inStock === true ? true: false
     }
 
+    console.log('in',req.body.inStock)
 
     toyService.save(toy)
         .then(savedToy => res.send(savedToy))

@@ -84,6 +84,5 @@ async function _saveToysToFile() {
                 throw err
             }
                  
-            return resolve()
     })
 }
