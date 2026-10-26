@@ -1,4 +1,3 @@
-import path from 'path'
 import express from 'express'
 import cors from 'cors'
 
@@ -6,6 +5,8 @@ import cors from 'cors'
 import { toyService } from './services/toy.service.js'
 import { loggerService } from './services/logger.service.js'
 import console from 'console'
+
+import { toyRouter } from './API/toy/toy.routes.js'
 
 const app = express()
 const corsOptions = {
@@ -26,29 +27,31 @@ app.use(express.json())
 
 // Express Routing:
 
+app.use('/api/toy',toyRouter)
+
 // REST API for Toys
-app.get('/api/toy', (req, res) => {
+// app.get('/api/toy', (req, res) => {
 
-  const { txt, inStock, labels, sortBy } = req.query
+//   const { txt, inStock, labels, sortBy } = req.query
 
-  const filterBy = {
-    txt: txt || '',
-    inStock: inStock === 'true' ? true : false ,
-    labels: labels || [],
-    sortBy: sortBy || 'createAt',
-  }
+//   const filterBy = {
+//     txt: txt || '',
+//     inStock: inStock === 'true' ? true : false ,
+//     labels: labels || [],
+//     sortBy: sortBy || 'createAt',
+//   }
 
   
-    toyService.query(filterBy)
-        .then(toys => {
-            console.log('S toys',toys)
-            res.send(toys)
-        })
-        .catch(err => {
-            loggerService.error('Cannot get toys', err)
-            res.status(400).send('Cannot get toys')
-        })
-})
+//     toyService.query(filterBy)
+//         .then(toys => {
+//             console.log('S toys',toys)
+//             res.send(toys)
+//         })
+//         .catch(err => {
+//             loggerService.error('Cannot get toys', err)
+//             res.status(400).send('Cannot get toys')
+//         })
+// })
 
 app.get('/api/toy/:toyId', (req, res) => {
     const { toyId } = req.params
