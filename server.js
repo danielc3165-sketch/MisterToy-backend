@@ -1,113 +1,57 @@
 import express from 'express'
 import cors from 'cors'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 
 import { toyService } from './services/toy.service.js'
-import { loggerService } from './services/logger.service.js'
 import console from 'console'
 
 import { toyRouter } from './API/toy/toy.routes.js'
+import { userRouter } from './API/user/user.routes.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+import { loggerService } from './services/logger.service.js'
+loggerService.info('server.js loaded...')
+
+
 
 const app = express()
+
+// Express Config:
+
+app.use(express.static('public'))
+app.use(express.json())
+
+if (process.env.NODE_ENV === 'production') {
+    // Express serve static files on production environment
+    app.use(express.static(path.resolve(__dirname, 'public')))
+    console.log('__dirname: ', __dirname)
+}else{
+
 const corsOptions = {
     origin: [
       'http://127.0.0.1:5173',
       'http://localhost:5173',
       
-      'http://127.0.0.1:5174',
-      'http://localhost:5174',
+      'http://127.0.0.1:3000', 
+      'http://localhost:3000',
     ],
     credentials: true,
 }
 
-// Express Config:
 app.use(cors(corsOptions))
-app.use(express.static('public'))
-app.use(express.json())
 
+}
 // Express Routing:
 
 app.use('/api/toy',toyRouter)
-
+app.use('/api/user',userRouter)
 // REST API for Toys
-// app.get('/api/toy', (req, res) => {
 
-//   const { txt, inStock, labels, sortBy } = req.query
-
-//   const filterBy = {
-//     txt: txt || '',
-//     inStock: inStock === 'true' ? true : false ,
-//     labels: labels || [],
-//     sortBy: sortBy || 'createAt',
-//   }
-
-  
-//     toyService.query(filterBy)
-//         .then(toys => {
-//             console.log('S toys',toys)
-//             res.send(toys)
-//         })
-//         .catch(err => {
-//             loggerService.error('Cannot get toys', err)
-//             res.status(400).send('Cannot get toys')
-//         })
-// })
-
-app.get('/api/toy/:toyId', (req, res) => {
-    const { toyId } = req.params
-
-    toyService.getById(toyId)
-        .then(toy => res.send(toy))
-        .catch(err => {
-            loggerService.error('Cannot get toy', err)
-            res.status(400).send('Cannot get toy')
-        })
-})
-
-app.post('/api/toy', (req, res) => {
-    
-    const toy = {
-        name: req.body.name,
-        price: +req.body.price,
-        imgUrl: req.body.imgUrl,
-        labels: req.body.labels,
-        inStock: req.body.inStock === true ? true: false
-    }
-
-    console.log('in',req.body.inStock)
-
-    toyService.save(toy)
-        .then(savedToy => res.send(savedToy))
-        .catch(err => {
-            loggerService.error('Cannot save toy', err)
-            res.status(400).send('Cannot save toy')
-        })
-})
-
-app.put('/api/toy/:id', (req, res) => {
-   
-    const toy = {
-        _id: req.params.id,
-        name: req.body.name,
-        price: +req.body.price,
-        imgUrl: req.body.imgUrl,
-        labels: req.body.labels,
-        inStock: req.body.inStock = 'true' ? true : false,
-        createdAt:+req.body.createdAt
-        
-    }
-
-    
-    toyService.save(toy)
-        .then(savedToy => {
-            //console.log('UP toy',savedToy)
-            res.send(savedToy)
-        })
-        .catch(err => {
-            loggerService.error('Cannot save toy', err)
-            res.status(400).send('Cannot save toy')
-        })
-})
+ 
 
 app.delete('/api/toy/:toyId', (req, res) => {
 

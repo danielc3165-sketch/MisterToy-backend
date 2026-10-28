@@ -108,15 +108,11 @@
     "createdAt": 1792879214861
   },
   {
-    "name": "Super Toy",
-    "price": 120,
-    "imgUrl": "hardcoded-url-for-now",
-    "labels": [
-      "Baby",
-      "Outdoor"
-    ],
+    "_id": "6adfede83dc9ab1ee7a96e47",
+    "name": "toy2",
+    "price": 300,
+    "imgUrl": "Img URL",
     "inStock": true,
-    "_id": "y1clx",
-    "createdAt": 1792927978836
+    "createdAt": 0
   }
 ]

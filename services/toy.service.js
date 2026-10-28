@@ -7,7 +7,7 @@ export const toyService = {
     query,
     getById,
     remove,
-    save
+    save,
 }
 
 const toys = utilService.readJsonFile('data/toy.json')
