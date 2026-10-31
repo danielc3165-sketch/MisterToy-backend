@@ -9,6 +9,7 @@ export const userService = {
     update,
     add,
     remove,
+	getByUserName,
 }
 
 async function query() {
@@ -80,7 +81,8 @@ async function add(user) {
 			password: user.password,
 			fullName: user.fullName,
 		}
-		const collection = await dbService.getCollection('user')
+		
+		const collection = await dbService.getCollection('users')
 		await collection.insertOne(userToAdd)
 		return userToAdd
 	} catch (err) {

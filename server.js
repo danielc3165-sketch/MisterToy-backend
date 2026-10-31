@@ -2,13 +2,13 @@ import express from 'express'
 import cors from 'cors'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import cookieParser from 'cookie-parser'
 
-
-import { toyService } from './services/toy.service.js'
 import console from 'console'
 
 import { toyRouter } from './API/toy/toy.routes.js'
 import { userRouter } from './API/user/user.routes.js'
+import { authRouter } from './API/auth/auth.routes.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -22,8 +22,10 @@ const app = express()
 
 // Express Config:
 
+
 app.use(express.static('public'))
 app.use(express.json())
+app.use(cookieParser())
 
 if (process.env.NODE_ENV === 'production') {
     // Express serve static files on production environment
@@ -49,44 +51,7 @@ app.use(cors(corsOptions))
 
 app.use('/api/toy',toyRouter)
 app.use('/api/user',userRouter)
-// REST API for Toys
-
- 
-
-app.delete('/api/toy/:toyId', (req, res) => {
-
-    const { toyId } = req.params
-
-    toyService.remove(toyId)
-        .then(() => res.send('Removed!'))
-        .catch(err => {
-            loggerService.error('Cannot remove toy', err)
-            res.status(400).send('Cannot remove toy')
-        })
-})
-
-// // User API
-// app.get('/api/user', (req, res) => {
-//     userService.query()
-//         .then(users => res.send(users))
-//         .catch(err => {
-//             loggerService.error('Cannot load users', err)
-//             res.status(400).send('Cannot load users')
-//         })
-// })
-
-
-
-// app.get('/api/user/:userId', (req, res) => {
-//     const { userId } = req.params
-
-//     userService.getById(userId)
-//         .then(user => res.send(user))
-//         .catch(err => {
-//             loggerService.error('Cannot load user', err)
-//             res.status(400).send('Cannot load user')
-//         })
-// })
+app.use('/api/auth',authRouter)
 
 // // Auth API
 // app.post('/api/auth/login', (req, res) => {
