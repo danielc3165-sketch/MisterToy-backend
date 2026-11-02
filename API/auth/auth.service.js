@@ -23,11 +23,8 @@ async function login(userName, password) {
    
     const match = (password===user.password)
     
-    console.log('p',password,user.password)
     if (!match) throw new Error('Invalid userName or password')
     
-     
-
     delete user.password
 
     

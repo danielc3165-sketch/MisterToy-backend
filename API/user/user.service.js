@@ -80,6 +80,7 @@ async function add(user) {
 			userName: user.userName,
 			password: user.password,
 			fullName: user.fullName,
+			isAdmin: false
 		}
 		
 		const collection = await dbService.getCollection('users')

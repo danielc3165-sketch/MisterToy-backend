@@ -8,13 +8,11 @@ export async function login(req, res) {
     
     try {
         const user = await authService.login(userName, password)
-        //console.log('user3',user)
         const loginToken = authService.getLoginToken(user)
-        
         loggerService.info('User login: ', user)
         
         res.cookie('loginToken', loginToken)
-
+        //console.log('cookie', res.cookie['loginToken'])
         res.send(user)
     } catch (err) {
         loggerService.error('Failed to Login ' + err)
@@ -40,7 +38,7 @@ export async function signup(req, res) {
         const loginToken = authService.getLoginToken(user)
 
         res.cookie('loginToken', loginToken)
-        
+
         res.send(user)
     } catch (err) {
         loggerService.error('Failed to signup ' + err)

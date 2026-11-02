@@ -3,17 +3,19 @@ import { loggerService } from "../../services/logger.service.js"
 
 export async function getToys(req, res){
       
-     //  const { txt, inStock, labels, sortBy } = req.query
     
-     //  const filterBy = {
-     //    txt: txt || '',
-     //    inStock: inStock === 'true' ? true : false ,
-     //    labels: labels || [],
-     //    sortBy: sortBy || 'createAt',
-     //  }
+    try{
+      const { txt, inStock, labels, sortBy } = req.query
     
-      try{
-          const toys = await toyService.query()
+      const filterBy = {
+        txt: txt || '',
+        inStock: inStock === 'true' ? true : false ,
+        labels: labels || [],
+        sortBy: sortBy || 'createAt',
+      }
+     
+          const toys = await toyService.query(filterBy)
+           
           res.send(toys)
         }
      catch(err) {
@@ -23,9 +25,11 @@ export async function getToys(req, res){
 }
 
 export async function getToyById(req, res) {
+   
     try {
         const toyId = req.params.id
         const toy = await toyService.getById(toyId)
+        console.log('toy:',toy)
         res.send(toy)
     } catch (err) {
         loggerService.error('Failed to get toy', err)
@@ -48,7 +52,7 @@ export async function getToyById(req, res) {
 
 
     try{
-    const savedToy = await toyService.update(toy)
+     const savedToy = await toyService.update(toy)
      res.send(savedToy)
      }
         catch(err){
@@ -88,4 +92,33 @@ export async function removeToy(req, res) {
             loggerService.error('Cannot remove toy', err)
             res.status(400).send('Cannot remove toy')
         }
+}
+
+export async function addToyMsg(req, res) {
+  
+  try {
+    const { toyId } = req.params
+    const { txt,by } = req.body
+    const msgToAdd = {
+      txt:txt,
+      by: { userId: by.userId, fullName: by.fullName },
+    }
+
+    const addedMsg = await toyService.addMsg(toyId, msgToAdd)
+    res.send(addedMsg)
+  } catch (error) {
+    loggerService.error('Cannot add message to toy', error)
+    res.status(500).send('Cannot add message to toy')
+  }
+}
+
+export async function removeToyMsg(req, res) {
+  try {
+    const { toyId, msgId } = req.params
+    await toyService.removeMsg(toyId, msgId)
+    res.send(msgId)
+  } catch (error) {
+    loggerService.error('Cannot delete message from toy', error)
+    res.status(500).send('Cannot delete message from toy')
+  }
 }
