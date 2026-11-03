@@ -20,8 +20,6 @@ export const toyService = {
 
 async function query(filterBy) {
 
-	 
-    
     try {
 	const { filterCriteria, sortCriteria, skip } = _buildCriteria(filterBy)
    
@@ -35,7 +33,7 @@ async function query(filterBy) {
     .toArray()
 
     // const maxPage = Math.ceil(totalCount / PAGE_SIZE)
-	 
+	  
     return filteredToys 
     
 	} catch (err) {
