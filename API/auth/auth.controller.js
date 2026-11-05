@@ -5,14 +5,14 @@ import { loggerService } from '../../services/logger.service.js'
 
 export async function login(req, res) {
     const { userName, password } = req.body
-    
+    console.log(userName, password)
     try {
         const user = await authService.login(userName, password)
         const loginToken = authService.getLoginToken(user)
         loggerService.info('User login: ', user)
         
         res.cookie('loginToken', loginToken)
-        //console.log('cookie', res.cookie['loginToken'])
+        console.log('cookie', res.cookie['loginToken'])
         res.send(user)
     } catch (err) {
         loggerService.error('Failed to Login ' + err)

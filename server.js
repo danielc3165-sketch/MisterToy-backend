@@ -9,6 +9,7 @@ import console from 'console'
 import { toyRouter } from './API/toy/toy.routes.js'
 import { userRouter } from './API/user/user.routes.js'
 import { authRouter } from './API/auth/auth.routes.js'
+import { reviewRouter } from './API/review/review.routes.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -52,6 +53,7 @@ app.use(cors(corsOptions))
 app.use('/api/toy',toyRouter)
 app.use('/api/user',userRouter)
 app.use('/api/auth',authRouter)
+app.use('/api/review', reviewRouter)
 
 // // Auth API
 // app.post('/api/auth/login', (req, res) => {
