@@ -1,6 +1,7 @@
 import { toyService } from "./toy.service.js"
 import { loggerService } from "../../services/logger.service.js"
 
+
 export async function getToys(req, res){
     console.log(' req.query:', req.query)
     
@@ -82,7 +83,6 @@ export async function addToy(req, res) {
 }
 
 export async function removeToy(req, res) {
-
     const { id } = req.params
     try{
     await toyService.remove(id)

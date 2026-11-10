@@ -9,9 +9,9 @@ export const reviewService = {
     add,
 }
 
-async function query(filterBy = {}) {
+async function query(filterBy = {byUserId: null, byToyId:null}) {
 	try {
-		//const criteria = _buildCriteria(filterBy)
+		const criteria = _buildCriteria(filterBy)
 		const collection = await dbService.getCollection('reviews')
         
         // const reviews1 = await collection.find({}).toArray()
@@ -22,9 +22,9 @@ async function query(filterBy = {}) {
         
 		var reviews = await collection.aggregate([
             {
-                $match: filterBy,
+                $match: criteria,
             },
-            {
+           {
                 $lookup: {
                     localField: 'userId',
                     from: 'users',
@@ -99,4 +99,20 @@ async function add(review) {
 		loggerService.error('cannot add review', err)
 		throw err
 	}
+}
+
+function _buildCriteria(filterBy) {
+	const criteria = {}
+
+	if (filterBy.byUserId) {
+        criteria.userId = ObjectId.createFromHexString(filterBy.byUserId)
+    }
+
+    if (filterBy.byToyId) {
+        criteria.toyId = ObjectId.createFromHexString(filterBy.byToyId)
+    }
+
+
+    console.log('criteria:', criteria)
+	return criteria
 }

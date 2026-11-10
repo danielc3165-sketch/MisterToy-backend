@@ -4,6 +4,7 @@ import { ObjectId } from 'mongodb'
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
 import { utilService } from '../../services/util.service.js'
+import { asyncLocalStorage } from '../../services/als.service.js'
 
 
 export const toyService = {
@@ -84,6 +85,7 @@ async function update(toy) {
 }
 
 async function remove(toyId) {
+  //const { loggedinUser } = asyncLocalStorage.getStore()
 	try {
 		const collection = await dbService.getCollection('toys')
 		const { deletedCount } = await collection.deleteOne({ _id: ObjectId.createFromHexString(toyId) })

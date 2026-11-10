@@ -9,7 +9,7 @@ export const authService = {
     signup,
     login,
     getLoginToken,
-    // validateToken
+    validateToken
 }
 
 const cryptr = new Cryptr(process.env.SECRET1 || 'Secret-Puk-1234')
@@ -20,25 +20,29 @@ async function login(userName, password) {
     const user = await userService.getByUserName(userName)
     if (!user) throw new Error('Invalid userName or password')
     
-   
-    const match = (password===user.password)
+    const match = await bcrypt.compare(password, user.password)
+	if (!match) return Promise.reject('Invalid username or password')
     
     if (!match) throw new Error('Invalid userName or password')
-    
-    delete user.password
-
+        delete user.password
+    user._id = user._id.toString()
+    //console.log('user',user)
     
     return user
 }
 
 async function signup(userName, password, fullName) {
-    //const saltRounds = 10
+    const saltRounds = 10
 
     loggerService.debug(`auth.service - signup with userName: ${userName}, fullname: ${fullName}`)
     if (!userName || !password || !fullName) throw new Error('Missing details')
 
-    //const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ userName, password: password, fullName })
+    const userExist = await userService.getByUserName(userName)
+
+	if (userExist) return Promise.reject('Username already taken')    
+
+    const hash = await bcrypt.hash(password, saltRounds)
+    return userService.add({ userName, password: hash, fullName })
 
 }
 
@@ -57,3 +61,4 @@ function validateToken(loginToken) {
     }
     return null
 }
+

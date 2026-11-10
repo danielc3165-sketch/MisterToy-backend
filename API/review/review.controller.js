@@ -3,7 +3,7 @@ import { loggerService } from '../../services/logger.service.js'
 
 export async function getReviews(req, res) {
 	try {
-		const reviews = await reviewService.query()
+		const reviews = await reviewService.query(req.query)
 		res.send(reviews)
 	} catch (err) {
 		loggerService.error('Cannot get reviews', err)
