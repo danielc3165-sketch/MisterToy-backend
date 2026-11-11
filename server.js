@@ -4,12 +4,16 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 
+import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.js'
+
+
 import console from 'console'
 
 import { toyRouter } from './API/toy/toy.routes.js'
 import { userRouter } from './API/user/user.routes.js'
 import { authRouter } from './API/auth/auth.routes.js'
 import { reviewRouter } from './API/review/review.routes.js'
+
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -27,12 +31,13 @@ const app = express()
 app.use(express.static('public'))
 app.use(express.json())
 app.use(cookieParser())
+app.all('*all', setupAsyncLocalStorage)
 
-if (process.env.NODE_ENV === 'production') {
-    // Express serve static files on production environment
-    app.use(express.static(path.resolve(__dirname, 'public')))
-    console.log('__dirname: ', __dirname)
-}else{
+// if (process.env.NODE_ENV === 'production') {
+//     // Express serve static files on production environment
+//     app.use(express.static(path.resolve(__dirname, 'public')))
+//     console.log('__dirname: ', __dirname)
+// }else{}
 
 const corsOptions = {
     origin: [
@@ -47,7 +52,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-}
+
 // Express Routing:
 
 app.use('/api/toy',toyRouter)

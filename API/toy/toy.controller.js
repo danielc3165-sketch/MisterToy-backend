@@ -3,8 +3,6 @@ import { loggerService } from "../../services/logger.service.js"
 
 
 export async function getToys(req, res){
-    console.log(' req.query:', req.query)
-    
     try{
       const { txt, inStock, labels, sortBy } = req.query
     

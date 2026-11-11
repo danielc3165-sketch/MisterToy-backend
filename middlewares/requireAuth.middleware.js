@@ -1,10 +1,11 @@
 import { config } from '../config/index.js'
 import { loggerService } from '../services/logger.service.js'
+import { authService } from '../API/auth/auth.service.js'
 import { asyncLocalStorage } from '../services/als.service.js'
 
 export function requireAuth(req, res, next) {
-	const { loggedinUser } = asyncLocalStorage.getStore()
-	console.log('loggedinUser:', loggedinUser)
+	const loggedinUser = asyncLocalStorage.getStore()
+	
 	req.loggedinUser = loggedinUser
 
 	if (config.isGuestMode && !loggedinUser) {
@@ -16,8 +17,9 @@ export function requireAuth(req, res, next) {
 }
 
 export function requireAdmin(req, res, next) {
-	const { loggedinUser } = asyncLocalStorage.getStore()
+	const { loggedinUser } =  asyncLocalStorage.getStore()
     
+	console.log('U', loggedinUser)
 
     if (!loggedinUser) return res.status(401).send('Not Authenticated')
 	if (!loggedinUser.isAdmin) {

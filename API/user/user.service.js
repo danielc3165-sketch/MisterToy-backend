@@ -80,6 +80,7 @@ async function add(user) {
 			userName: user.userName,
 			password: user.password,
 			fullName: user.fullName,
+			imgUrl:user.imgUrl,
 			isAdmin: false
 		}
 		

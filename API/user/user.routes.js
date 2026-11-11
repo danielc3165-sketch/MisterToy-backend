@@ -8,6 +8,5 @@ export const userRouter = router
 
 userRouter.get('/', getUsers )
 userRouter.get('/:id', getUser)
-// userRouter.post('/', addToy)
 userRouter.put('/:id',  updateUser)
 userRouter.delete('/:id', deleteUser)

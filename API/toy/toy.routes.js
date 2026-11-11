@@ -8,9 +8,9 @@ export const toyRouter = router
 
 toyRouter.get('/', getToys )
 toyRouter.get('/:id', getToyById)
-toyRouter.post('/', requireAuth, requireAdmin,  addToy)
+toyRouter.post('/', requireAuth, requireAdmin, addToy)
 toyRouter.put('/:id', requireAuth, requireAdmin, updateToy)
 toyRouter.delete('/:id', requireAuth, requireAdmin, removeToy)
 
-toyRouter.post('/:toyId/msg', addToyMsg)
-toyRouter.delete('/:toyId/msg/:msgId', removeToyMsg)
+toyRouter.post('/:toyId/msg', requireAuth, addToyMsg)
+toyRouter.delete('/:toyId/msg/:msgId', requireAuth,  requireAdmin, removeToyMsg)
