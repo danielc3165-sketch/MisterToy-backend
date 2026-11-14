@@ -28,7 +28,6 @@ export async function getToyById(req, res) {
     try {
         const toyId = req.params.id
         const toy = await toyService.getById(toyId)
-        console.log('toy:',toy)
         res.send(toy)
     } catch (err) {
         loggerService.error('Failed to get toy', err)
