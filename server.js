@@ -75,4 +75,3 @@ const PORT = process.env.PORT || 3030
 server.listen(PORT, () =>
     loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`)
 )
-d
