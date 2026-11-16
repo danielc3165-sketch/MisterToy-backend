@@ -15,8 +15,7 @@ io.on('connection', socket => {
     console.log('Someone connected...')
     
     socket.on('store-change',change =>{
-        console.log('change',change)
-        // io.emit('store-change',change)
+        socket.broadcast.emit('store-change',change)
     })
 
     socket.on('join-topic', topic => {

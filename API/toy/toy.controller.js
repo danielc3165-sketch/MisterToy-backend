@@ -24,7 +24,6 @@ export async function getToys(req, res){
 }
 
 export async function getToyById(req, res) {
-   
     try {
         const toyId = req.params.id
         const toy = await toyService.getById(toyId)

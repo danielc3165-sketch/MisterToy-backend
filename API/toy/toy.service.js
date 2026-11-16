@@ -33,7 +33,7 @@ async function query(filterBy) {
     .toArray()
 
     // const maxPage = Math.ceil(totalCount / PAGE_SIZE)
-    return filteredToys 
+    return filteredToys
     
 	} catch (err) {
 		loggerService.error('cannot find toys', err)
@@ -45,10 +45,10 @@ async function query(filterBy) {
 async function getById(toyId) {
 	try {
 		const collection = await dbService.getCollection('toys')
-		const  toy= await collection.findOne({ _id: ObjectId.createFromHexString(toyId) })
+		const  toy= await collection.findOne({ _id: ObjectId.createFromHexString(toyId)})
 		//toy.createdAt = toy._id.getTimestamp()
-
 		return toy
+
 	} catch (err) {
 		loggerService.error(`while finding toy ${toyId}`, err)
 		throw err
